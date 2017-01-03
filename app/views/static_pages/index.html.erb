@@ -4,12 +4,22 @@
     <li class="nav-item active">
       <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
     </li>
-    <li class="nav-item float-xs-right">
+    <li class="nav-item">
       <a class="nav-link" href="#">Courses</a>
-    </li>
-    <li class="nav-item float-xs-right">
-      <a class="nav-link" href="#">Log In</a>
-    </li>
+  </ul>
+  <ul class="nav navbar-nav float-xs-right">
+    <% if user_signed_in? %>
+      <li class="nav-item">
+        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+      </li>
+  <% else %>
+      <li class="nav-item">
+        <%= link_to 'Sign In', new_user_session_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>
+      </li>
+  <% end %>
   </ul>
 </nav>
 
@@ -21,7 +31,7 @@
     <br />
       <h2>Take a Step into a World Unknown</h2>
     <br />
-      <%= link_to 'Learn More', '#', class: 'btn btn-success' %>
+      <%= link_to 'Start Learning', new_user_registration_path, class: 'btn btn-success' %>
      <br /><br /> 
   </div>
 </div>
